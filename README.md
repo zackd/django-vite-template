@@ -29,7 +29,7 @@ cp .env.example .env
 ./scripts/dev.sh
 ```
 
-Visit **http://localhost:8000**
+Visit **[http://localhost:8000](http://localhost:8000)**
 
 ## Generate a secret key
 
@@ -37,8 +37,11 @@ Visit **http://localhost:8000**
 python -c "import secrets; print(secrets.token_urlsafe(50))"
 ```
 
+
+
 ## Project structure
 
+```bash
   django-vite-starter/
   ├── myproject/          # Django settings package
   │   ├── settings.py
@@ -58,27 +61,35 @@ python -c "import secrets; print(secrets.token_urlsafe(50))"
   ├── static/             # Vite build output (gitignored)
   └── scripts/
       └── dev.sh          # Start Django + Vite concurrently
+```
+
+
 
 ## Environment variables
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `SECRET_KEY` | — | Django secret key (required) |
-| `DEBUG` | `True` | Debug mode |
-| `ALLOWED_HOSTS` | `localhost,127.0.0.1` | Comma-separated allowed hosts |
-| `EMAIL_BACKEND` | console | Django email backend class |
-| `EMAIL_HOST` | `smtp.gmail.com` | SMTP host |
-| `EMAIL_PORT` | `587` | SMTP port |
-| `EMAIL_HOST_USER` | — | SMTP username |
-| `EMAIL_HOST_PASSWORD` | — | SMTP password |
-| `DEFAULT_FROM_EMAIL` | `My Project <noreply@example.com>` | From address |
-| `CONTACT_RECIPIENT_EMAIL` | `hello@example.com` | Contact form recipient |
-| `CSRF_TRUSTED_ORIGINS` | — | Comma-separated trusted origins (production) |
-| `DJANGO_VITE_DEV_MODE` | `False` | Set `True` to enable Vite dev server HMR |
+
+| Variable                  | Default                            | Description                                  |
+| ------------------------- | ---------------------------------- | -------------------------------------------- |
+| `SECRET_KEY`              | —                                  | Django secret key (required)                 |
+| `DEBUG`                   | `True`                             | Debug mode                                   |
+| `ALLOWED_HOSTS`           | `localhost,127.0.0.1`              | Comma-separated allowed hosts                |
+| `EMAIL_BACKEND`           | console                            | Django email backend class                   |
+| `EMAIL_HOST`              | `smtp.gmail.com`                   | SMTP host                                    |
+| `EMAIL_PORT`              | `587`                              | SMTP port                                    |
+| `EMAIL_HOST_USER`         | —                                  | SMTP username                                |
+| `EMAIL_HOST_PASSWORD`     | —                                  | SMTP password                                |
+| `DEFAULT_FROM_EMAIL`      | `My Project <noreply@example.com>` | From address                                 |
+| `CONTACT_RECIPIENT_EMAIL` | `hello@example.com`                | Contact form recipient                       |
+| `CSRF_TRUSTED_ORIGINS`    | —                                  | Comma-separated trusted origins (production) |
+| `DJANGO_VITE_DEV_MODE`    | `False`                            | Set `True` to enable Vite dev server HMR     |
+
+
+
 
 ## Contact form
 
 The template includes a contact form (`/contact/`) with:
+
 - Honeypot spam protection (hidden `tel` field)
 - Email sending via Django's `EmailMessage`
 
@@ -89,6 +100,8 @@ The template includes a contact form (`/contact/`) with:
 
 1. Replace `YOUR_GA_ID` in `frontend/ga.js` with your measurement ID
 2. Uncomment the GA script tag in `templates/base.html`
+
+
 
 ## Production build
 
@@ -119,3 +132,4 @@ Or with Docker Compose (development with file watching):
 ```bash
 docker compose up
 ```
+
