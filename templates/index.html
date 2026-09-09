@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome — My Project{% endblock %}
+{% block description %}A Django + Vite starter template.{% endblock %}
+
+{% block content %}
+<section class="max-w-2xl mx-auto px-6 py-24 text-center">
+    <p class="mono mb-4">django + vite starter</p>
+    <h1 class="font-serif text-5xl font-medium mb-6 reveal">
+        Your project is <em class="italic text-jade-deep">live.</em>
+    </h1>
+    <p class="text-lg text-stone mb-10 reveal">
+        Edit <code class="font-mono text-sm bg-surface px-2 py-0.5 rounded">templates/index.html</code> to get started.
+    </p>
+    <div class="flex justify-center gap-4 flex-wrap reveal">
+        <a class="btn" href="/contact">Contact →</a>
+    </div>
+</section>
+{% endblock %}

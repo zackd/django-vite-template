@@ -1,0 +1,53 @@
+{% load static %}
+{% load django_vite %}
+<!DOCTYPE html>
+<html lang="en-GB" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}My Project{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="{% block description %}A Django + Vite starter template.{% endblock %}" />
+
+    <link rel="icon" href="{% static 'favicon.svg' %}" sizes="any" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="{% static 'apple-touch-icon-180x180.png' %}" />
+    <link rel="manifest" href="{% static 'site.webmanifest' %}" />
+
+    {% comment %}
+    Google Analytics — replace YOUR_GA_ID in frontend/ga.js with your measurement ID,
+    and uncomment the script tag below.
+    {% endcomment %}
+    {% comment %} <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID"></script> {% endcomment %}
+    {% vite_asset 'frontend/ga.js' %}
+
+    {% vite_hmr_client %}
+    <link rel="stylesheet" href="{% vite_asset_url 'frontend/style.css' %}">
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-paper text-ink font-sans antialiased overflow-x-hidden">
+
+{% block header %}
+  {% include "header.html" %}
+{% endblock %}
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+{% block footer %}
+<footer class="pt-[46px] pb-14 border-t border-line">
+  <div class="wrap flex justify-between items-center gap-6 flex-wrap">
+    <a class="font-serif font-semibold text-lg" href="/">My Project</a>
+    <div class="flex gap-[26px] items-center flex-wrap">
+      <a class="text-sm text-stone hover:text-jade-deep transition-colors" href="/contact">Contact</a>
+    </div>
+    <div class="font-mono text-xs text-stone tracking-widest">© {% now "Y" %} My Project</div>
+  </div>
+</footer>
+{% endblock %}
+
+{% vite_asset 'frontend/index.ts' %}
+</body>
+</html>

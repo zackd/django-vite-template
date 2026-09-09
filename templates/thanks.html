@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Thanks!{% endblock %}
+{% block description %}Thanks for your message. We will be in touch soon!{% endblock %}
+
+{% block content %}
+<section class="max-w-2xl mx-auto px-6 py-14 min-h-screen">
+    <div class="min-h-50 text-center">
+        <h1 class="text-2xl font-extrabold text-gray-900 mb-5">Thanks for your message!</h1>
+        <h2 class="text-base">We'll be in touch!</h2>
+    </div>
+
+    <div class="mt-8 text-center">
+        <p><a class="text-jade-deep hover:underline" href="{% url 'index' %}">&larr; Back to the homepage</a></p>
+    </div>
+
+</section>
+{% endblock %}

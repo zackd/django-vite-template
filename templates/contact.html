@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Contact{% endblock %}
+{% block description %}Get in touch.{% endblock %}
+
+{% block content %}
+<section class="max-w-2xl mx-auto px-6 py-14">
+    <h1 class="text-4xl font-extrabold text-gray-900 mb-8">Contact us</h1>
+
+    <form id="contactForm" method="post" novalidate class="flex flex-col gap-4">
+        {% csrf_token %}
+
+        <div class="sm:col-span-3">
+            <label for="{{ form.name.id_for_label }}" class="block font-medium text-gray-700 mb-2">Full name</label>
+            <input
+                type="text"
+                placeholder="John Smith"
+                id="{{ form.name.id_for_label }}"
+                name="{{ form.name.name }}"
+                value="{{ form.name.value|default:"" }}"
+                required=""
+                autocomplete="Full name"
+                class="w-full border border-gray-400 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            />
+            {% if form.name.errors %}
+                <div class="text-xs text-red-500 mt-2">{{ form.name.errors|join:", " }}</div>
+            {% endif %}
+        </div>
+        <div class="sm:col-span-3 invisible h-0">
+            <label for="{{ form.tel.id_for_label }}" class="block font-medium text-gray-700 mb-2">Phone</label>
+            <input
+                type="tel"
+                placeholder="(phone)"
+                id="{{ form.tel.id_for_label }}"
+                name="{{ form.tel.name }}"
+                value=""
+                autocomplete="off"
+                class="w-full border border-gray-400 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            />
+        </div>
+        <div class="sm:col-span-3">
+            <label for="{{ form.email.id_for_label }}" class="block font-medium text-gray-700 mb-2">Email</label>
+            <input
+                type="email"
+                placeholder="name@example.com"
+                id="{{ form.email.id_for_label }}"
+                name="{{ form.email.name }}"
+                value="{{ form.email.value|default:"" }}"
+                required=""
+                autocomplete="Email address"
+                class="w-full border border-gray-400 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            />
+            {% if form.email.errors %}
+            <div class="text-xs text-red-500 mt-2">{{ form.email.errors|join:", " }}</div>
+            {% endif %}
+        </div>
+        <div class="sm:col-span-3">
+            <label for="{{ form.msg.id_for_label }}" class="block font-medium text-gray-700 mb-2">Message</label>
+            <textarea
+                    id="{{ form.msg.id_for_label }}"
+                    name="msg"
+                    placeholder="Your message"
+                    rows="5"
+                    class="w-full border border-gray-400 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 resize-y"
+                ></textarea>
+            {% if form.msg.errors %}
+                <div class="text-xs text-red-500 mt-1">{{ form.msg.errors|join:", " }}</div>
+            {% endif %}
+        </div>
+
+        <div class="max-w-6xl text-end">
+            <button
+                type="submit"
+                class="bg-gray-900 cursor-pointer hover:bg-green-500 transition-colors text-white font-medium px-6 py-2.5 rounded-lg">
+                Submit
+            </button>
+        </div>
+
+    </form>
+</section>
+{% endblock %}
